@@ -1,0 +1,8 @@
+<script>
+ import { onMount } from 'svelte'; import { getWatchlist } from '$lib/store';
+ let list=[]; onMount(()=>list=getWatchlist());
+</script>
+<svelte:head><title>My Watchlist — AniVerse</title></svelte:head>
+<div class="page"><a class="back" href="/">← AniVerse</a><h1>My Watchlist</h1><p class="sub">Your saved anime, stored locally in this browser.</p>{#if !list.length}<div class="empty">♡<h2>Your watchlist is empty</h2><p>Save anime from their detail pages and they'll appear here.</p><a href="/">Explore anime →</a></div>{:else}<div class="grid">{#each list as a}<a class="card" href="/anime/{a.id}"><img src={a.image} alt={a.title}/><h3>{a.title}</h3><span>{a.type||'Anime'} · {a.episodes||'?'} eps</span></a>{/each}</div>{/if}</div>
+<style>:global(body){margin:0;background:#08090d;color:#fff;font-family:Inter,system-ui,sans-serif}.page{max-width:1200px;margin:auto;padding:45px 5vw 80px}.back{color:#9b7cff;text-decoration:none}.sub{color:#777}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;margin-top:35px}.card{text-decoration:none;color:inherit}.card img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:13px}.card h3{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:9px 0 5px}.card span{font-size:11px;color:#666}.empty{text-align:center;margin:100px auto;max-width:400px;color:#777}.empty>div{font-size:50px;color:#9b7cff}.empty h2{color:#fff}.empty a{display:inline-block;margin-top:15px;padding:11px 16px;border-radius:9px;background:#8d6cf1;color:white;text-decoration:none}@media(max-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
+</style>
