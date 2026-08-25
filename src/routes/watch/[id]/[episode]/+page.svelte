@@ -1,0 +1,9 @@
+<script>
+ import { page } from '$app/stores';
+ $: id=$page.params.id; $: episode=$page.params.episode;
+</script>
+<svelte:head><title>Episode {episode} — AniVerse</title></svelte:head>
+<div class="page"><header><a href="/">AniVerse</a><a href="/anime/{id}">← Anime Details</a></header><main><div class="player"><div class="play">▶</div><p>Episode {episode}</p><small>Connect a licensed or officially provided video source here.</small></div><div class="bar"><a href="/watch/{id}/{Math.max(1,+episode-1)}">← Previous</a><strong>Episode {episode}</strong><a href="/watch/{id}/{+episode+1}">Next →</a></div><section><h2>Watch responsibly</h2><p>AniVerse provides the interface and anime metadata. Video playback should be supplied only through sources you are authorized to embed or distribute.</p></section></main></div>
+<style>
+:global(body){margin:0;background:#08090d;color:#f5f5f7;font-family:Inter,system-ui,sans-serif}.page{min-height:100vh;padding:0 5vw 70px}header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff0b}header a{color:#aaa;text-decoration:none}header a:first-child{font-weight:900;color:white;font-size:21px}main{max-width:1200px;margin:35px auto}.player{aspect-ratio:16/9;background:#111218;border:1px solid #292b34;border-radius:15px;display:grid;place-items:center;text-align:center;box-shadow:0 20px 70px #0008}.play{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:#8d6cf1;font-size:25px;padding-left:4px}.player p{margin:-15px 0 0;font-weight:800}.player small{color:#777;max-width:450px}.bar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid #ffffff0b}.bar a{color:#9b7cff;text-decoration:none}.bar strong{font-size:14px}section{margin-top:45px;color:#8e909c}section h2{color:white}section p{line-height:1.7}
+</style>
